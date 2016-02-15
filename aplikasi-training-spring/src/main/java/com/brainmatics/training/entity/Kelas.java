@@ -1,12 +1,19 @@
 package com.brainmatics.training.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +36,23 @@ public class Kelas {
 	@Temporal(TemporalType.DATE)
 	@Column(name="tanggal_selesai", nullable=false)
 	private Date tanggalSelesai;
+	
+	@ManyToOne
+	@JoinColumn(name="id_instruktur", nullable=false)
+	private Instruktur instruktur;
+	
+	@OneToMany
+	@JoinTable(
+		name="peserta_training",
+		joinColumns=@JoinColumn(name="id_kelas"), 
+		inverseJoinColumns=@JoinColumn(name="id_peserta")
+	)
+	private List<Peserta> daftarPeserta = new ArrayList<Peserta>();
 
+	
+	@OneToMany(mappedBy="kelas", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<DetailMateriKelas> daftarMateri = new ArrayList<DetailMateriKelas>();
+	
 	public Integer getId() {
 		return id;
 	}
@@ -68,5 +91,29 @@ public class Kelas {
 
 	public void setTanggalSelesai(Date tanggalSelesai) {
 		this.tanggalSelesai = tanggalSelesai;
+	}
+
+	public Instruktur getInstruktur() {
+		return instruktur;
+	}
+
+	public void setInstruktur(Instruktur instruktur) {
+		this.instruktur = instruktur;
+	}
+
+	public List<Peserta> getDaftarPeserta() {
+		return daftarPeserta;
+	}
+
+	public void setDaftarPeserta(List<Peserta> daftarPeserta) {
+		this.daftarPeserta = daftarPeserta;
+	}
+
+	public List<DetailMateriKelas> getDaftarMateri() {
+		return daftarMateri;
+	}
+
+	public void setDaftarMateri(List<DetailMateriKelas> daftarMateri) {
+		this.daftarMateri = daftarMateri;
 	}
 }
