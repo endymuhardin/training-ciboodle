@@ -1,13 +1,14 @@
 package com.brainmatics.training.spring.ioc;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class PesertaDao {
 	
+	@Autowired
 	private KoneksiDatabase koneksi;
 	
-	public void setKoneksi(KoneksiDatabase koneksi) {
-		this.koneksi = koneksi;
-	}
-
 	public void simpan(){
 		koneksi.connect();
 		System.out.println("Menyimpan data");

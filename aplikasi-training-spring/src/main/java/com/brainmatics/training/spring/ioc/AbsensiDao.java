@@ -1,11 +1,11 @@
 package com.brainmatics.training.spring.ioc;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class AbsensiDao {
-	private KoneksiDatabase koneksi;
-	
-	public AbsensiDao(KoneksiDatabase k){
-		this.koneksi = k;
-	}
+	@Autowired private KoneksiDatabase koneksi;
 	
 	public void simpan(){
 		koneksi.connect();
