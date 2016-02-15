@@ -1,18 +1,14 @@
 package com.brainmatics.training.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-@Entity @Table(name="kelas")
-public class Kelas {
+@Entity @Table(name="instruktur")
+public class Instruktur {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
@@ -21,52 +17,31 @@ public class Kelas {
 	
 	@Column(nullable=false)
 	private String nama;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="tanggal_mulai", nullable=false)
-	private Date tanggalMulai;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="tanggal_selesai", nullable=false)
-	private Date tanggalSelesai;
-
+	@Column(nullable=false)
+	private String email;
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public String getKode() {
 		return kode;
 	}
-
 	public void setKode(String kode) {
 		this.kode = kode;
 	}
-
 	public String getNama() {
 		return nama;
 	}
-
 	public void setNama(String nama) {
 		this.nama = nama;
 	}
-
-	public Date getTanggalMulai() {
-		return tanggalMulai;
+	public String getEmail() {
+		return email;
 	}
-
-	public void setTanggalMulai(Date tanggalMulai) {
-		this.tanggalMulai = tanggalMulai;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
-	public Date getTanggalSelesai() {
-		return tanggalSelesai;
-	}
-
-	public void setTanggalSelesai(Date tanggalSelesai) {
-		this.tanggalSelesai = tanggalSelesai;
-	}
+	
 }
