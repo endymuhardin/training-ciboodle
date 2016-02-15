@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+	<bean id="koneksi" class="com.brainmatics.training.spring.ioc.KoneksiDatabase">
+		<property name="host" value="localhost"/>
+		<property name="port" value="12345"/>
+		<property name="namaDatabase" value="training"/>
+		<property name="username" value="belajar"/>
+		<property name="password" value="spring"/>
+	</bean>
+	
+	<bean id="absensiDao" class="com.brainmatics.training.spring.ioc.AbsensiDao">
+		<constructor-arg ref="koneksi"/>
+	</bean>
+	
+	<bean id="pesertaDao" class="com.brainmatics.training.spring.ioc.PesertaDao">
+		<property name="koneksi" ref="koneksi"/>
+	</bean>
+	
+</beans>
