@@ -16,6 +16,5 @@ public class PesertaDao {
 	@Transactional
 	public void simpan(Peserta p){
 		em.persist(p);
-		
 	}
 }
