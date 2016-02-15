@@ -1,0 +1,10 @@
+# Ignore Mac Files
+.DS_Store
+
+# Ignore Maven
+target
+
+# Ignore Eclipse
+.classpath
+.project
+.settings
