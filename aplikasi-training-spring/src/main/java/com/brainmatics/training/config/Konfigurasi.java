@@ -15,10 +15,12 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:jdbc.properties")
 @ComponentScan(basePackages="com.brainmatics.training.dao")
+@EnableTransactionManagement
 public class Konfigurasi {
 	@Autowired private Environment env;
 	
