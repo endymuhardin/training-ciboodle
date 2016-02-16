@@ -1,9 +1,11 @@
 package com.brainmatics.training.springboot.controller;
 
 import static com.jayway.restassured.RestAssured.get;
+import static com.jayway.restassured.RestAssured.delete;
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -96,5 +98,52 @@ public class PesertaControllerTest {
 			.post("/peserta/")
 		.then()
 			.statusCode(400);
+	}
+	
+	@Test
+	public void testCariById(){
+		get("/peserta/99")
+		.then()
+			.statusCode(200)
+			.body("id", equalTo(99))
+			.body("kode", equalTo("P-009"));
+		
+		get("/peserta/990")
+		.then()
+			.statusCode(404);
+	}
+	
+	@Test
+	public void testUpdate(){
+		Peserta p = new Peserta();
+		p.setKode("PX-009");
+		p.setNama("Peserta 909");
+		p.setTanggalLahir(new Date());
+		
+		given()
+			.body(p)
+			.contentType(ContentType.JSON)
+		.when()
+			.put("/peserta/99")
+		.then()
+			.statusCode(200);
+		
+		get("/peserta/99")
+		.then()
+			.statusCode(200)
+			.body("id", equalTo(99))
+			.body("kode", equalTo("PX-009"))
+			.body("nama", equalTo("Peserta 909"));
+	}
+	
+	@Test
+	public void testDelete(){
+		delete("/peserta/99")
+		.then()
+		.statusCode(200);
+		
+		get("/peserta/99")
+		.then()
+			.statusCode(404);
 	}
 }
