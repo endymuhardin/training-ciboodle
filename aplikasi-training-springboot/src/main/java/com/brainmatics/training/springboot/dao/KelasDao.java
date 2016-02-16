@@ -8,6 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.brainmatics.training.springboot.entity.Kelas;
+import com.brainmatics.training.springboot.entity.Peserta;
 
 public interface KelasDao extends PagingAndSortingRepository<Kelas, Integer> {
 
@@ -15,5 +16,8 @@ public interface KelasDao extends PagingAndSortingRepository<Kelas, Integer> {
 
 	@Query("select k from Kelas k where k.tanggalMulai >= :mulai and k.tanggalMulai <= :sampai order by k.tanggalMulai")
 	public List<Kelas> findByTanggalMulaiAntara(@Param("mulai") Date mulai, @Param("sampai") Date sampai);
+
+	@Query("select k from Kelas k where :peserta member of k.daftarPeserta order by k.tanggalMulai")
+	public List<Kelas> findByPeserta(@Param("peserta") Peserta p);
 
 }

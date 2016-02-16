@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.brainmatics.training.springboot.AplikasiTrainingSpringbootApplication;
 import com.brainmatics.training.springboot.entity.Instruktur;
 import com.brainmatics.training.springboot.entity.Kelas;
+import com.brainmatics.training.springboot.entity.Peserta;
 
 import org.junit.Assert;
 
@@ -98,5 +99,26 @@ public class KelasDaoTest {
 		Date sampai2 = frm.parse("2015-02-10");
 		List<Kelas> hasil2 = kelasDao.findByTanggalMulaiAntara(mulai2, sampai2);
 		Assert.assertTrue(hasil2.isEmpty());
+	}
+	
+	@Test
+	public void testCariKelasByPeserta(){
+		// peserta tidak ikut kelas sama sekali
+		Peserta p0 = pesertaDao.findOne(98);
+		List<Kelas> hasil0 = kelasDao.findByPeserta(p0);
+		Assert.assertTrue(hasil0.isEmpty());
+		
+		// peserta yang ikut 1 kelas
+		Peserta p1 = pesertaDao.findOne(91);
+		List<Kelas> hasil1 = kelasDao.findByPeserta(p1);
+		Assert.assertFalse(hasil1.isEmpty());
+		Assert.assertTrue(hasil1.size() == 1);
+		
+		// peserta yang ikut 2 kelas
+		Peserta p2 = pesertaDao.findOne(94);
+		List<Kelas> hasil2 = kelasDao.findByPeserta(p2);
+		Assert.assertFalse(hasil2.isEmpty());
+		Assert.assertTrue(hasil2.size() == 2);
+		
 	}
 }
