@@ -1,3 +1,11 @@
-delete from peserta where id = 99;
 insert into peserta (id, kode, nama, tanggal_lahir) values 
-(99, 'P-001', 'Peserta 001', '1945-08-17');
+(91, 'P-001', 'Peserta 001', '1945-08-17'),
+(92, 'P-002', 'Peserta 002', '1945-08-17'),
+(93, 'P-003', 'Peserta 003', '1945-08-17'),
+(94, 'P-004', 'Peserta 004', '1945-08-17'),
+(95, 'P-005', 'Peserta 005', '1945-08-17'),
+(96, 'P-006', 'Peserta 006', '1945-08-17'),
+(97, 'P-007', 'Peserta 007', '1945-08-17'),
+(98, 'P-008', 'Peserta 008', '1945-08-17'),
+(99, 'P-009', 'Peserta 009', '1945-08-17')
+;

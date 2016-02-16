@@ -15,7 +15,7 @@ import com.brainmatics.training.springboot.entity.Peserta;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(AplikasiTrainingSpringbootApplication.class)
-@Sql(scripts="/sample-peserta.sql")
+@Sql(scripts={"/delete-sample-data.sql","/sample-peserta.sql"})
 public class PesertaDaoTest {
 	@Autowired
 	private PesertaDao pesertaDao;
@@ -24,7 +24,7 @@ public class PesertaDaoTest {
 	public void testSimpan(){
 		Peserta p = new Peserta();
 		p.setNama("Endy");
-		p.setKode("P-002");
+		p.setKode("P-102");
 		p.setTanggalLahir(new Date());
 		
 		Assert.assertNull(p.getId());
@@ -37,8 +37,8 @@ public class PesertaDaoTest {
 		Integer id = 99;
 		Peserta px = pesertaDao.findOne(id);
 		Assert.assertNotNull(px);
-		Assert.assertEquals("P-001", px.getKode());
-		Assert.assertEquals("Peserta 001", px.getNama());
+		Assert.assertEquals("P-009", px.getKode());
+		Assert.assertEquals("Peserta 009", px.getNama());
 		
 		Assert.assertNull(pesertaDao.findOne(101));
 		
