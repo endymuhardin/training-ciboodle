@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -72,5 +74,29 @@ public class KelasDaoTest {
 		Kelas k = kelasDao.findOne(99);
 		Assert.assertNotNull(k);
 		Assert.assertTrue(k.getDaftarPeserta().size() == 4);
+	}
+	
+	@Test
+	public void testCariKelasByNamaInstruktur(){
+		List<Kelas> hasil = kelasDao.findByInstrukturNamaContaining("001");
+		Assert.assertFalse(hasil.isEmpty());
+		
+		List<Kelas> hasil2 = kelasDao.findByInstrukturNamaContaining("003");
+		Assert.assertTrue(hasil2.isEmpty());
+		
+	}
+	
+	@Test
+	public void testCariKelasByTanggalMulai() throws Exception {
+		SimpleDateFormat frm = new SimpleDateFormat("yyyy-MM-dd");
+		Date mulai = frm.parse("2016-01-30");
+		Date sampai = frm.parse("2016-02-10");
+		List<Kelas> hasil = kelasDao.findByTanggalMulaiAntara(mulai, sampai);
+		Assert.assertFalse(hasil.isEmpty());
+		
+		Date mulai2 = frm.parse("2015-01-30");
+		Date sampai2 = frm.parse("2015-02-10");
+		List<Kelas> hasil2 = kelasDao.findByTanggalMulaiAntara(mulai2, sampai2);
+		Assert.assertTrue(hasil2.isEmpty());
 	}
 }
