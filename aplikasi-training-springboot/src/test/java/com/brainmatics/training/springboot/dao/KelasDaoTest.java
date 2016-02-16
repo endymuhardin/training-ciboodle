@@ -94,6 +94,8 @@ public class KelasDaoTest {
 		Date sampai = frm.parse("2016-02-10");
 		List<Kelas> hasil = kelasDao.findByTanggalMulaiAntara(mulai, sampai);
 		Assert.assertFalse(hasil.isEmpty());
+		Kelas k = hasil.get(0);
+		System.out.println("Jumlah peserta = "+k.getDaftarPeserta().size());
 		
 		Date mulai2 = frm.parse("2015-01-30");
 		Date sampai2 = frm.parse("2015-02-10");
