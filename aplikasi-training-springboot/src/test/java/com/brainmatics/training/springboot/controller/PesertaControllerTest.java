@@ -2,9 +2,7 @@ package com.brainmatics.training.springboot.controller;
 
 import static com.jayway.restassured.RestAssured.get;
 import static com.jayway.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItems;
-
+import static org.hamcrest.Matchers.*;
 import java.text.SimpleDateFormat;
 
 import org.junit.Before;
@@ -57,7 +55,9 @@ public class PesertaControllerTest {
 		.when()
 			.post("/peserta/")
 		.then()
-			.statusCode(201);
+			.statusCode(201)
+			.header("Location", containsString("/peserta/"))
+			.log().headers();
 		
 		// nama tidak diisi
 		Peserta px = new Peserta();
