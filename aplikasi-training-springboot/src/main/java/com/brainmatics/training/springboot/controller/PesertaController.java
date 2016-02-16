@@ -1,5 +1,7 @@
 package com.brainmatics.training.springboot.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +28,7 @@ public class PesertaController {
 	
 	@RequestMapping(value="/peserta/", method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public void pesertaBaru(@RequestBody Peserta peserta){
+	public void pesertaBaru(@RequestBody @Valid Peserta peserta){
 		pesertaDao.save(peserta);
 	}
 }

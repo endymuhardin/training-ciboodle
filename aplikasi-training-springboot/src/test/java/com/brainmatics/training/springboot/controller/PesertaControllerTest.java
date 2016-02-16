@@ -1,8 +1,11 @@
 package com.brainmatics.training.springboot.controller;
 
-import static com.jayway.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-import java.util.Date;
+import static com.jayway.restassured.RestAssured.get;
+import static com.jayway.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
+
+import java.text.SimpleDateFormat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -40,11 +43,13 @@ public class PesertaControllerTest {
 	}
 	
 	@Test
-	public void testSimpanPesertaBaru(){
+	public void testSimpanPesertaBaru() throws Exception {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
 		Peserta p = new Peserta();
 		p.setKode("PT-001");
 		p.setNama("Peserta Test 001");
-		p.setTanggalLahir(new Date());
+		p.setTanggalLahir(formatter.parse("2010-10-10"));
 		
 		given()
 			.body(p)
@@ -53,5 +58,43 @@ public class PesertaControllerTest {
 			.post("/peserta/")
 		.then()
 			.statusCode(201);
+		
+		// nama tidak diisi
+		Peserta px = new Peserta();
+		px.setKode("PT-001");
+		given()
+			.body(px)
+			.contentType(ContentType.JSON)
+		.when()
+			.post("/peserta/")
+		.then()
+			.statusCode(400);
+		
+		// kode kurang dari 3 huruf
+		Peserta px1 = new Peserta();
+		px1.setKode("PT");
+		px1.setNama("Peserta Test");
+		p.setTanggalLahir(formatter.parse("2010-10-10"));
+		
+		given()
+			.body(px1)
+			.contentType(ContentType.JSON)
+		.when()
+			.post("/peserta/")
+		.then()
+			.statusCode(400);
+		
+		// tanggal lahir di masa depan
+		Peserta px2 = new Peserta();
+		px2.setKode("PT-009");
+		px2.setNama("Peserta Test");
+		p.setTanggalLahir(formatter.parse("3010-10-10"));
+		given()
+			.body(px1)
+			.contentType(ContentType.JSON)
+		.when()
+			.post("/peserta/")
+		.then()
+			.statusCode(400);
 	}
 }

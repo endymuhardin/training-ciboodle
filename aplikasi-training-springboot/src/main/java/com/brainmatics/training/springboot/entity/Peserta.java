@@ -10,18 +10,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity @Table(name="peserta")
 public class Peserta {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
+	@NotNull @NotEmpty @Size(min=3,max=10)
 	@Column(unique=true, nullable=false)
 	private String kode;
 	
+	@NotNull @NotEmpty @Size(min=2,max=255)
 	@Column(nullable=false)
 	private String nama;
 	
+	@NotNull @Past
 	@Temporal(TemporalType.DATE)
 	@Column(name="tanggal_lahir", nullable=false)
 	private Date tanggalLahir;
