@@ -30,6 +30,7 @@ import org.junit.Assert;
 		"/delete-sample-data.sql", 
 		"/sample-peserta.sql", 
 		"/sample-instruktur.sql", 
+		"/sample-materi.sql",
 		"/sample-kelas.sql"
 })
 public class KelasDaoTest {

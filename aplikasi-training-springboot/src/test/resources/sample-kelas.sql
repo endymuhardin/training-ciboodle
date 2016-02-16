@@ -9,3 +9,14 @@ insert into kelas (id, kode, nama, tanggal_mulai, tanggal_selesai, id_instruktur
 
 insert into peserta_training (id_kelas, id_peserta) values 
 (99,91),(99,92),(99,93),(99,94);
+
+insert into detail_materi_kelas (id, id_kelas, id_materi, urutan) values
+(91,98,91,1);
+insert into detail_materi_kelas (id, id_kelas, id_materi, urutan) values
+(92,98,92,2);
+insert into detail_materi_kelas (id, id_kelas, id_materi, urutan) values
+(93,98,93,3);
+insert into detail_materi_kelas (id, id_kelas, id_materi, urutan) values
+(94,99,94,1);
+insert into detail_materi_kelas (id, id_kelas, id_materi, urutan) values
+(95,99,95,2);
