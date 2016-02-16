@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -41,7 +42,7 @@ public class Kelas {
 	@JoinColumn(name="id_instruktur", nullable=false)
 	private Instruktur instruktur;
 	
-	@OneToMany
+	@ManyToMany
 	@JoinTable(
 		name="peserta_training",
 		joinColumns=@JoinColumn(name="id_kelas"), 
