@@ -23,7 +23,12 @@ import org.junit.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(AplikasiTrainingSpringbootApplication.class)
-@Sql(scripts={"/delete-sample-data.sql", "/sample-peserta.sql", "/sample-instruktur.sql", "/sample-kelas.sql"})
+@Sql(scripts={
+		"/delete-sample-data.sql", 
+		"/sample-peserta.sql", 
+		"/sample-instruktur.sql", 
+		"/sample-kelas.sql"
+})
 public class KelasDaoTest {
 	@Autowired private InstrukturDao instrukturDao;
 	@Autowired private KelasDao kelasDao;
@@ -57,7 +62,8 @@ public class KelasDaoTest {
 		ResultSet rs = ps.executeQuery();
 		Assert.assertTrue(rs.next());
 		Long hasil = rs.getLong(1);
-		
+		rs.close();
+		c.close();
 		Assert.assertTrue(hasil == 2);
 	}
 	
