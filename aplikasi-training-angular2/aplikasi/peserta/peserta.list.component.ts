@@ -1,4 +1,8 @@
 import {Component} from 'angular2/core';
+import {Response} from 'angular2/http';
+
+import {Observable} from 'rxjs';
+
 
 import {PesertaService} from './peserta.service';
 
@@ -10,7 +14,17 @@ export class PesertaListComponent{
     daftarPeserta: any;
     
     constructor(private ps: PesertaService){
-        this.daftarPeserta = ps.getDaftarPeserta();
+        this.loadPeserta();
+    }
+    
+    loadPeserta(){
+        let hasil: Observable<Response> = this.ps.getDaftarPeserta();
+        
+        hasil.subscribe(
+            (data) => {this.daftarPeserta = data.content},
+            (err) => {console.log(err)},
+            () => {console.log("request selesai")}
+        );
     }
     
     editPeserta(peserta){

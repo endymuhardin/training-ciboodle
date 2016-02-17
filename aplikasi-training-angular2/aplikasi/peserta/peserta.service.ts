@@ -1,15 +1,20 @@
+import {Injectable} from 'angular2/core';
+import {Http, Response} from 'angular2/http';
+
+import 'rxjs/Rx';
+
+import {Peserta} from './peserta';
+
+@Injectable()
 export class PesertaService {
     
+    _serverUrl = '/api/peserta/';
+    
+    constructor(private http:Http){}
+    
     getDaftarPeserta(){
-        let daftarPeserta = [
-            {id: 10, kode: "P-100", nama: "Peserta 100"},
-            {id: 11, kode: "P-101", nama: "Peserta 101"},
-            {id: 12, kode: "P-102", nama: "Peserta 102"},
-            {id: 13, kode: "P-103", nama: "Peserta 103"},
-            {id: 14, kode: "P-104", nama: "Peserta 104"},
-            {id: 15, kode: "P-105", nama: "Peserta 105"}
-        ];
-        return daftarPeserta;
+        return this.http.get(this._serverUrl)
+        .map((res: Response) => res.json());
     }
     
 }

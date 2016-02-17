@@ -28,6 +28,7 @@ System.config({
     "ts": "github:frankwallis/plugin-typescript@3.0.3",
     "typescript": "npm:typescript@1.8.0",
     "zone.js": "npm:zone.js@0.5.14",
+    "rxjs": "npm:rxjs@5.0.0-beta.0",
     "github:frankwallis/plugin-typescript@3.0.3": {
       "typescript": "npm:typescript@1.9.0-dev.20160214"
     },
