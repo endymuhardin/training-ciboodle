@@ -21,7 +21,7 @@ export class PesertaListComponent{
         let hasil: Observable<Response> = this.ps.getDaftarPeserta();
         
         hasil.subscribe(
-            (data) => {this.daftarPeserta = data.content},
+            (data) => {this.daftarPeserta = data},
             (err) => {console.log(err)},
             () => {console.log("request selesai")}
         );

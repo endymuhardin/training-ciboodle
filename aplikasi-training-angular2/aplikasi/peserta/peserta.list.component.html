@@ -1,4 +1,9 @@
+<div *ngIf="!daftarPeserta">
+    ...loading...
+</div>
 
+<div *ngIf="daftarPeserta">
+Jumlah data {{daftarPeserta.totalElements}}
 <table>
     <thead>
         <tr>
@@ -8,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="#p of daftarPeserta">
+        <tr *ngFor="#p of daftarPeserta.content">
             <td>{{p.kode}}</td>
             <td>{{p.nama}}</td>
             <td>
@@ -18,3 +23,4 @@
         </tr>
     </tbody>
 </table>
+</div>
