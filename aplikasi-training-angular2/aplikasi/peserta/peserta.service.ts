@@ -3,8 +3,6 @@ import {Http, Response} from 'angular2/http';
 
 import 'rxjs/Rx';
 
-import {Peserta} from './peserta';
-
 @Injectable()
 export class PesertaService {
     
@@ -17,4 +15,7 @@ export class PesertaService {
         .map((res: Response) => res.json());
     }
     
+    hapusPeserta(id: number){
+        return this.http.delete(this._serverUrl+"/"+id);
+    }
 }

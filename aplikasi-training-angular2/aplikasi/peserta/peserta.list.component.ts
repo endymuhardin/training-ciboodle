@@ -33,5 +33,11 @@ export class PesertaListComponent{
     
     deletePeserta(peserta){
         console.log("Delete peserta "+peserta.id);
+        this.ps.hapusPeserta(peserta.id)
+        .subscribe(
+            (data) => { /* tidak ada return value */ },
+            (err) => {console.log(err)},
+            () => { this.loadPeserta() }
+        );
     }
 }
