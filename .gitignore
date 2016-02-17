@@ -15,3 +15,5 @@ target
 # Ignore Angular Project files
 node_modules
 jspm_packages
+*.js
+*.js.map
