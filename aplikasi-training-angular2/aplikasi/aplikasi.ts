@@ -8,8 +8,9 @@ import {HaloComponent} from './halo/halo.component';
 @Component({
     selector: 'aplikasi',
     template:`
-    <halo></halo>
-    
+    <div>
+        <halo></halo>
+    </div>
     <a [routerLink]="['Peserta']">Peserta</a> | 
     <a [routerLink]="['Materi']">Materi</a> | 
     <a [routerLink]="['Kelas']">Kelas</a> 
