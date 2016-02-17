@@ -5,6 +5,11 @@ System.config({
   typescriptOptions: {
     "tsconfig": true
   },
+  paths: {
+    "npm:*": "jspm_packages/npm/*",
+    "github:*": "jspm_packages/github/*"
+  },
+
   packages: {
     "aplikasi": {
       "main": "boot",
@@ -15,10 +20,6 @@ System.config({
         }
       }
     }
-  }, 
-  paths: {
-    "npm:*": "jspm_packages/npm/*",
-    "github:*": "jspm_packages/github/*"
   },
 
   map: {
