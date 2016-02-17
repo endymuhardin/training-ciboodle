@@ -1,6 +1,9 @@
 # Ignore Mac Files
 .DS_Store
 
+# Ignore Vim
+*.swp
+
 # Ignore Maven
 target
 
@@ -8,3 +11,7 @@ target
 .classpath
 .project
 .settings
+
+# Ignore Angular Project files
+node_modules
+jspm_packages
