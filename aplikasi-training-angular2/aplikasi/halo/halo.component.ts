@@ -5,5 +5,5 @@ import {Component} from 'angular2/core';
   templateUrl: './aplikasi/halo/halo.component.html'
 })
 export class HaloComponent {
-    
+    nama: string = 'endy';
 }
