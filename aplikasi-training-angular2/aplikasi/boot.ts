@@ -9,7 +9,6 @@ import {LocationStrategy,
 
 import {AplikasiComponent} from './aplikasi';
 
-
 console.log("Ini file boot.ts");
 bootstrap(AplikasiComponent, [
     ROUTER_PROVIDERS,
