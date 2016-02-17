@@ -1,0 +1,1 @@
+console.log("Ini file boot.ts");
