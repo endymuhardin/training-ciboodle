@@ -7,12 +7,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>P-001</td>
-            <td>Peserta 001</td>
+        <tr *ngFor="#p of daftarPeserta">
+            <td>{{p.kode}}</td>
+            <td>{{p.nama}}</td>
             <td>
-                <button>edit</button>
-                <button>delete</button>
+                <button (click)="editPeserta(p)">edit</button>
+                <button (click)="deletePeserta(p)">delete</button>
             </td>
         </tr>
     </tbody>
