@@ -24,6 +24,7 @@ import com.brainmatics.training.springboot.entity.Peserta;
 import com.brainmatics.training.springboot.exception.DataNotFoundException;
 
 @Controller
+@RequestMapping("/api")
 public class PesertaController {
 	@Autowired private PesertaDao pesertaDao;
 	
