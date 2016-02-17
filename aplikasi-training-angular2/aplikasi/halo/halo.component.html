@@ -1,1 +1,4 @@
-<h2>Halo {{nama}}</h2>
+<h2>Halo {{ nama }}</h2>
+
+Masukkan nama Anda : <input #user type="text" (keyup)="updateNama(user.value)">
+<button (click)="updateNama(user.value)">Ok</button>

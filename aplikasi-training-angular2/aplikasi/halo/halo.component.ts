@@ -5,5 +5,12 @@ import {Component} from 'angular2/core';
   templateUrl: './aplikasi/halo/halo.component.html'
 })
 export class HaloComponent {
-    nama: string = 'endy';
+    public nama: string;
+    
+    
+    updateNama(x: string){
+        console.log("Menjalankan method updatenama dengan argumen "+x);
+        this.nama = x;
+        console.log('Nama : '+this.nama);
+    }
 }
